@@ -1,1 +1,114 @@
-"<h1>Mi Pagina web Con Ggit</h1>" 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QA: Habilidades y Conocimientos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #00838f !important;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .skill-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+        .icon {
+            font-size: 40px;
+            color: #00838f;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">QA en el Futuro</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <p>Este es mi primer sitio gestionado con Git y GitHub</p>
+        <p>Mi nombre es: <strong>SergioMartinez Mosquera</strong></p>
+        <p>y mi correo es: jeffreymg123@gmail.com</p>
+        
+        <h1 class="text-center">¿Qué se necesita para ser un QA competitivo?</h1>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <i class="icon">🧐</i>
+                    <h3>Atención al detalle</h3>
+                    <p>Fundamental para encontrar errores y mejorar la calidad.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <i class="icon">📊</i>
+                    <h3>Capacidad analítica</h3>
+                    <p>Interpretar datos y patrones es clave en QA.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="skill-card">
+                    <i class="icon">🤝</i>
+                    <h3>Trabajo en equipo</h3>
+                    <p>Colaborar con desarrolladores y otros equipos.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="skill-card">
+                    <i class="icon">🔧</i>
+                    <h3>Automatización de pruebas</h3>
+                    <p>Conocer herramientas como Selenium, Cypress y WebDriver.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="skill-card">
+                    <i class="icon">☕</i>
+                    <h3>Lenguajes de Programación</h3>
+                    <p>Dominio de Java, Python y JavaScript para pruebas.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="skill-card">
+                    <i class="icon">🛠</i>
+                    <h3>Frameworks de Testing</h3>
+                    <p>Experiencia con TestNG, JUnit y Cucumber.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="skill-card">
+                    <i class="icon">🌐</i>
+                    <h3>Pruebas API</h3>
+                    <p>Conocimiento de Postman y RestAssured para validaciones de API.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <button class="btn btn-primary btn-lg" onclick="mostrarMensaje()">¿Cómo empezar?</button>
+        </div>
+    </div>
+    
+    <script>
+        function mostrarMensaje() {
+            alert("Empieza aprendiendo testing manual y luego avanza a la automatización con herramientas como Selenium, TestNG y Postman.");
+        }
+    </script>
+</body>
+</html>
