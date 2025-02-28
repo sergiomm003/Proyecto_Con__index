@@ -4,111 +4,552 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QA: Habilidades y Conocimientos</title>
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #00838f;
+            --secondary: #4fb3bf;
+            --accent: #ff6e40;
+            --light: #e0f7fa;
+            --dark: #333;
+        }
+        
         body {
-            background: linear-gradient(135deg, #e0f7fa, #80deea);
-            color: #333;
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--light), #80deea);
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
         }
+        
         .navbar {
-            background-color: #00838f !important;
+            background-color: var(--primary) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
         }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+            font-size: 1.7rem;
+        }
+        
         .container {
             margin-top: 40px;
+            margin-bottom: 40px;
         }
-        .skill-card {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
+        
+        .header-section {
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s;
         }
+        
+        .personal-info {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-radius: 50px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .personal-info i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-weight: 700;
+            margin: 30px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+        }
+        
         .skill-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-bottom: 4px solid var(--accent);
         }
+        
+        .icon-container {
+            background-color: var(--light);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .icon-container {
+            background-color: var(--primary);
+        }
+        
+        .skill-card:hover .icon {
+            color: white;
+        }
+        
         .icon {
-            font-size: 40px;
-            color: #00838f;
+            font-size: 35px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .skill-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .btn-qa {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 143, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-qa:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-qa:hover:before {
+            width: 100%;
+        }
+        
+        .btn-qa:hover {
+            box-shadow: 0 7px 20px rgba(255, 110, 64, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .btn-qa i {
+            margin-right: 8px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:before {
+            background-color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        
+        /* Modal personalizado */
+        .modal-content {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-content h5 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">QA en el Futuro</a>
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-check-circle"></i> QA en el Futuro
+            </a>
         </div>
     </nav>
     
     <div class="container">
-        <p>Este es mi primer sitio gestionado con Git y GitHub</p>
-        <p>Mi nombre es: <strong>SergioMartinez Mosquera</strong></p>
-        <p>y mi correo es: jeffreymg123@gmail.com</p>
+        <!-- Header Section -->
+        <div class="header-section animated">
+            <p>Este es mi primer sitio gestionado con Git y GitHub</p>
+            <div class="personal-info">
+                <i class="fas fa-user"></i> <strong>Sergio Martinez Mosquera</strong>
+                <span class="mx-2">|</span>
+                <i class="fas fa-envelope"></i> jeffreymg123@gmail.com
+            </div>
+            <h1 class="text-center">¿Qué se necesita para ser un QA competitivo?</h1>
+        </div>
         
-        <h1 class="text-center">¿Qué se necesita para ser un QA competitivo?</h1>
-        <div class="row mt-4">
-            <div class="col-md-6">
+        <!-- Skills Grid -->
+        <div class="row gy-4">
+            <!-- Skill 1 -->
+            <div class="col-md-6 col-lg-4 animated delay-1">
                 <div class="skill-card">
-                    <i class="icon">🧐</i>
+                    <div class="icon-container">
+                        <i class="fas fa-search icon"></i>
+                    </div>
                     <h3>Atención al detalle</h3>
-                    <p>Fundamental para encontrar errores y mejorar la calidad.</p>
+                    <p>Fundamental para encontrar errores y mejorar la calidad de los productos de software.</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            
+            <!-- Skill 2 -->
+            <div class="col-md-6 col-lg-4 animated delay-2">
                 <div class="skill-card">
-                    <i class="icon">📊</i>
+                    <div class="icon-container">
+                        <i class="fas fa-chart-line icon"></i>
+                    </div>
                     <h3>Capacidad analítica</h3>
-                    <p>Interpretar datos y patrones es clave en QA.</p>
+                    <p>Interpretar datos y patrones es clave en QA para identificar problemas recurrentes.</p>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            
+            <!-- Skill 3 -->
+            <div class="col-md-6 col-lg-4 animated delay-3">
                 <div class="skill-card">
-                    <i class="icon">🤝</i>
+                    <div class="icon-container">
+                        <i class="fas fa-users icon"></i>
+                    </div>
                     <h3>Trabajo en equipo</h3>
-                    <p>Colaborar con desarrolladores y otros equipos.</p>
+                    <p>Colaborar eficazmente con desarrolladores y otros equipos para mejorar la calidad del producto.</p>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            
+            <!-- Skill 4 -->
+            <div class="col-md-6 col-lg-4 animated delay-4">
                 <div class="skill-card">
-                    <i class="icon">🔧</i>
+                    <div class="icon-container">
+                        <i class="fas fa-robot icon"></i>
+                    </div>
                     <h3>Automatización de pruebas</h3>
-                    <p>Conocer herramientas como Selenium, Cypress y WebDriver.</p>
+                    <p>Manejo de herramientas como Selenium, Cypress y WebDriver para pruebas automatizadas eficientes.</p>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            
+            <!-- Skill 5 -->
+            <div class="col-md-6 col-lg-4 animated delay-5">
                 <div class="skill-card">
-                    <i class="icon">☕</i>
+                    <div class="icon-container">
+                        <i class="fas fa-code icon"></i>
+                    </div>
                     <h3>Lenguajes de Programación</h3>
-                    <p>Dominio de Java, Python y JavaScript para pruebas.</p>
+                    <p>Dominio de Java, Python y JavaScript para crear scripts de pruebas robustos y mantenibles.</p>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            
+            <!-- Skill 6 -->
+            <div class="col-md-6 col-lg-4 animated delay-6">
                 <div class="skill-card">
-                    <i class="icon">🛠</i>
+                    <div class="icon-container">
+                        <i class="fas fa-cogs icon"></i>
+                    </div>
                     <h3>Frameworks de Testing</h3>
-                    <p>Experiencia con TestNG, JUnit y Cucumber.</p>
+                    <p>Experiencia con TestNG, JUnit y Cucumber para crear suites de pruebas estructuradas.</p>
                 </div>
             </div>
-            <div class="col-md-6 mt-3">
+            
+            <!-- Skill 7 -->
+            <div class="col-md-6 col-lg-4 mx-auto animated delay-7">
                 <div class="skill-card">
-                    <i class="icon">🌐</i>
+                    <div class="icon-container">
+                        <i class="fas fa-server icon"></i>
+                    </div>
                     <h3>Pruebas API</h3>
-                    <p>Conocimiento de Postman y RestAssured para validaciones de API.</p>
+                    <p>Conocimiento profundo de Postman y RestAssured para validaciones de API y testing de servicios.</p>
                 </div>
             </div>
         </div>
         
-        <div class="text-center mt-4">
-            <button class="btn btn-primary btn-lg" onclick="mostrarMensaje()">¿Cómo empezar?</button>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-qa" data-bs-toggle="modal" data-bs-target="#startModal">
+                <i class="fas fa-play-circle"></i> ¿Cómo empezar?
+            </button>
+            <button class="btn btn-qa btn-outline" data-bs-toggle="modal" data-bs-target="#resourcesModal">
+                <i class="fas fa-book"></i> Recursos útiles
+            </button>
         </div>
     </div>
     
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 QA en el Futuro - Desarrollado con ❤️ por Sergio Martinez</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal: Cómo empezar -->
+    <div class="modal fade" id="startModal" tabindex="-1" aria-labelledby="startModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="startModalLabel">
+                        <i class="fas fa-rocket"></i> Cómo empezar en QA Testing
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Comienza con lo básico</h5>
+                            <p>Aprende los fundamentos del testing manual para entender los conceptos clave y términos del QA.</p>
+                            <div>
+                                <span class="tool-badge"><i class="fas fa-file-alt"></i> Test Cases</span>
+                                <span class="tool-badge"><i class="fas fa-bug"></i> Bug Reporting</span>
+                                <span class="tool-badge"><i class="fas fa-tasks"></i> Test Planning</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Aprende un lenguaje de programación</h5>
+                            <p>Elige uno de estos lenguajes populares en QA para avanzar hacia la automatización.</p>
+                            <div>
+                                <span class="tool-badge"><i class="fab fa-java"></i> Java</span>
+                                <span class="tool-badge"><i class="fab fa-python"></i> Python</span>
+                                <span class="tool-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Domina herramientas de automatización</h5>
+                            <p>Familiarízate con estas herramientas esenciales para automatización de pruebas.</p>
+                            <div>
+                                <span class="tool-badge"><i class="fas fa-atom"></i> Selenium WebDriver</span>
+                                <span class="tool-badge"><i class="fas fa-check-double"></i> TestNG/JUnit</span>
+                                <span class="tool-badge"><i class="fas fa-vial"></i> Cypress</span>
+                                <span class="tool-badge"><i class="fas fa-network-wired"></i> Postman</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Aprende CI/CD y DevOps</h5>
+                            <p>Integra tus pruebas en pipelines de integración continua para aumentar tu valor como QA.</p>
+                            <div>
+                                <span class="tool-badge"><i class="fab fa-jenkins"></i> Jenkins</span>
+                                <span class="tool-badge"><i class="fab fa-github-alt"></i> GitHub Actions</span>
+                                <span class="tool-badge"><i class="fab fa-docker"></i> Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-qa" data-bs-dismiss="modal">¡Entendido!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Recursos -->
+    <div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resourcesModalLabel">
+                        <i class="fas fa-book"></i> Recursos para QA Testing
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5><i class="fas fa-graduation-cap"></i> Cursos recomendados</h5>
+                    <ul>
+                        <li>Fundamentos de Testing - Ministry of Testing</li>
+                        <li>Selenium WebDriver con Java - Udemy</li>
+                        <li>API Testing con Postman - Coursera</li>
+                        <li>Cypress para principiantes - TestAutomation University</li>
+                    </ul>
+                    
+                    <h5><i class="fas fa-book-open"></i> Libros esenciales</h5>
+                    <ul>
+                        <li>"Agile Testing" por Lisa Crispin y Janet Gregory</li>
+                        <li>"Test Automation in the Real World" por Greg Paskal</li>
+                        <li>"Continuous Testing for DevOps Professionals" por Eran Kinsbruner</li>
+                    </ul>
+                    
+                    <h5><i class="fas fa-globe"></i> Comunidades</h5>
+                    <ul>
+                        <li>Ministry of Testing</li>
+                        <li>StackOverflow - Etiqueta #test-automation</li>
+                        <li>Reddit - r/QualityAssurance</li>
+                        <li>TestingConferences.org</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-qa" data-bs-dismiss="modal">¡Gracias!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function mostrarMensaje() {
-            alert("Empieza aprendiendo testing manual y luego avanza a la automatización con herramientas como Selenium, TestNG y Postman.");
-        }
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página de QA cargada correctamente');
+        });
     </script>
 </body>
 </html>
